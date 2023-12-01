@@ -8,7 +8,7 @@ var checkRequiredElementsExist = setInterval(function () {
 }, 100);
 
 function hideThings () {
-  if ((webIdeButton = document.querySelector('[data-qa-selector="web_ide_button"]'))) {
+  if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
     webIdeButton.style.display = 'none';
   }
   if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
