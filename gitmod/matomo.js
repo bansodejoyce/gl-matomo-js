@@ -11,9 +11,14 @@ function hideThings () {
   if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
     webIdeButton.style.display = 'none';
   }
-  if ((editButton = document.getElementById('dropdown-toggle-btn-52'))) {
-    editButton.style.display = 'none';
+  // if ((editButton = document.getElementById('dropdown-toggle-btn-52'))) {
+  //   editButton.style.display = 'none';
+  // }
+  var x = document.getElementById("dropdown-toggle-btn-52");
+  if (x.style.display === "none") {
+    return x.style.display = "block";
   }
+  return x.style.display = "none";
   if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
     editIdeButton.style.display = 'none';
   }
