@@ -11,7 +11,7 @@ function hideThings () {
   if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
     webIdeButton.style.display = 'none';
   }
-  if ((editButton = document.getElementById('gl-new-dropdown'))) {
+  if ((editButton = document.getElementById('gl-sm-ml-3'))) {
     editButton.style.display = 'none';
   }
   if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
