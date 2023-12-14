@@ -12,9 +12,11 @@ var checkRequiredElementsExist = setInterval(function () {
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
+  console.log(" webIdeButton ", document.querySelector('[data-qa-selector="action_dropdown"]'))
   if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
     webIdeButton.style.display = 'none';
   }
+  console.log("editButton ",document.getElementById('dropdown-toggle-btn-52'));
   if ((editButton = document.getElementById('dropdown-toggle-btn-52'))) {
     editButton.style.display = 'none';
   }
