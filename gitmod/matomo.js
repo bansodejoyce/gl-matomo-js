@@ -5,7 +5,7 @@ var checkRequiredElementsExist = setInterval(function () {
   if (window.gl !== 'undefined') {
     clearInterval(checkRequiredElementsExist);
     hideThings();
-    gainsightIdentify();
+    // gainsightIdentify();
   }
 }, 100);
 
