@@ -1,11 +1,15 @@
 addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
+  console.log("window.gl  ",window.gl);
+  console.log("document.querySelectorAll('[data-user]').length  ",document.querySelectorAll('[data-user]').length);
   if (window.gl !== 'undefined' && document.querySelectorAll('[data-user]').length) {
     clearInterval(checkRequiredElementsExist);
     hideThings();
     gainsightIdentify();
   }
 }, 100);
+
+console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
   if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
