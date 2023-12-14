@@ -12,12 +12,12 @@ var checkRequiredElementsExist = setInterval(function () {
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
-  console.log(" webIdeButton ", document.querySelector('[data-qa-selector="action_dropdown"]'))
-  if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
+  var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
+  if (webIdeButton.style.display === "block" ) {
     webIdeButton.style.display = 'none !important';
   }
-  console.log("editButton ",document.getElementById('dropdown-toggle-btn-52'));
-  if ((editButton = document.getElementById('dropdown-toggle-btn-52'))) {
+  var editButton = document.getElementById('dropdown-toggle-btn-52')
+  if (editButton.style.display === "block") {
     editButton.style.display = 'none !important';
   }
   if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
