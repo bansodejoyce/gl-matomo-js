@@ -7,7 +7,7 @@ var checkRequiredElementsExist = setInterval(function () {
     hideThings();
     // gainsightIdentify();
   }
-}, 100);
+}, 200);
 
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
