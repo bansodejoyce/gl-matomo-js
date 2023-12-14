@@ -2,7 +2,7 @@ addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
   console.log("window.gl  ",window.gl);
   console.log("document.querySelectorAll('[data-user]').length  ",document.querySelectorAll('[data-user]').length);
-  if (window.gl !== 'undefined' && document.querySelectorAll('[data-user]').length) {
+  if (window.gl !== 'undefined') {
     clearInterval(checkRequiredElementsExist);
     hideThings();
     gainsightIdentify();
