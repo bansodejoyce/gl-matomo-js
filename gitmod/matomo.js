@@ -14,20 +14,20 @@ console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 function hideThings () {
   console.log(" webIdeButton ", document.querySelector('[data-qa-selector="action_dropdown"]'))
   if ((webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]'))) {
-    webIdeButton.style.display = 'none';
+    webIdeButton.style.display = 'none !important';
   }
   console.log("editButton ",document.getElementById('dropdown-toggle-btn-52'));
   if ((editButton = document.getElementById('dropdown-toggle-btn-52'))) {
-    editButton.style.display = 'none';
+    editButton.style.display = 'none !important';
   }
   if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
-    editIdeButton.style.display = 'none';
+    editIdeButton.style.display = 'none !important';
   }
   if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
-    infrastructureLink.style.display = 'none';
+    infrastructureLink.style.display = 'none !important';
   }
   if ((monitorLink = document.querySelector('[data-track-label="monitor_menu"]'))) {
-    monitorLink.style.display = 'none';
+    monitorLink.style.display = 'none !important';
   }
   if ((k8sLink = document.evaluate(
         "//a[contains(text(),'Add Kubernetes cluster')]", document, null,
