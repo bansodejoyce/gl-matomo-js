@@ -12,10 +12,13 @@ var checkRequiredElementsExist = setInterval(function () {
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
+  
   var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
-  if (webIdeButton.style.display === "block" ) {
-    webIdeButton.style.display = 'none !important';
-  }
+  webIdeButton.setAttribute('style', 'display:none !important');
+
+  // if (webIdeButton.style.display === "block" ) {
+  //   webIdeButton.style.display = 'none !important';
+  // }
   var editButton = document.getElementById('dropdown-toggle-btn-52')
   if (editButton.style.display === "block") {
     editButton.style.display = 'none !important';
