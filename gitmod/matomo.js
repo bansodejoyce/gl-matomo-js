@@ -2,34 +2,29 @@ addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
   console.log("window.gl  ",window.gl);
   console.log("document.querySelectorAll('[data-user]').length  ",document.querySelectorAll('[data-user]').length);
-  if (window.gl !== 'undefined') {
+  if (window.gl !== 'undefined'&&  document.querySelectorAll('[data-user]').length) {
     clearInterval(checkRequiredElementsExist);
     hideThings();
-    // gainsightIdentify();
+    gainsightIdentify();
   }
-}, 200);
+}, 100);
 
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
   
   var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
-  webIdeButton.setAttribute('style', 'display:none !important');
-
-  // if (webIdeButton.style.display === "block" ) {
-  //   webIdeButton.style.display = 'none !important';
-  // }
-  var editButton = document.getElementById('dropdown-toggle-btn-52')
-  if (editButton.style.display === "block") {
+  if(!webIdeButton){
+    webIdeButton.setAttribute('style', 'display:none !important')
+  }
+  var editButton = document.getElementById('dropdown-toggle-btn-50')
+  if (editButton.style.display === "block !important") {
     editButton.style.display = 'none !important';
   }
-  if ((editIdeButton = document.querySelector('[data-track-action="click_edit_ide"]'))) {
-    editIdeButton.style.display = 'none !important';
-  }
-  if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
+  if ((infrastructureLink = document.getElementById('menu-section-button-operate'))) {
     infrastructureLink.style.display = 'none !important';
   }
-  if ((monitorLink = document.querySelector('[data-track-label="monitor_menu"]'))) {
+  if (monitorLink = document.getElementById('menu-section-button-monitor')) {
     monitorLink.style.display = 'none !important';
   }
   if ((k8sLink = document.evaluate(
