@@ -1,8 +1,8 @@
 addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
   console.log("window.gl  ",window.gl);
-  console.log("document.querySelectorAll('[data-user]').length  ",document.querySelectorAll('[data-user]').length);
-  if (window.gl !== 'undefined'&&  document.querySelectorAll('[data-user]').length) {
+  console.log("document.querySelectorAll('[data-project]').length  ",document.querySelectorAll('[data-project]').length);
+  if (window.gl !== 'undefined' &&  document.querySelectorAll('[data-project]').length) {
     clearInterval(checkRequiredElementsExist);
     hideThings();
     gainsightIdentify();
@@ -59,5 +59,5 @@ function addGainsight () {
 }
 
 function gainsightIdentify() {
-   aptrinsic("identify", { "id": document.querySelectorAll('[data-user]')[0].getAttribute('data-user') } );
+   aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
 }
