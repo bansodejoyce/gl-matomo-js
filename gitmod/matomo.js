@@ -18,8 +18,8 @@ function hideThings () {
     webIdeButton.setAttribute('style', 'display:none !important')
   }
   var editButton = document.getElementById('dropdown-toggle-btn-50')
-  if (editButton.style.display === "block !important") {
-    editButton.style.display = 'none !important';
+  if (!editButton) {
+    editButton.setAttribute('style', 'display:none !important')
   }
   if ((infrastructureLink = document.getElementById('menu-section-button-operate'))) {
     infrastructureLink.style.display = 'none !important';
