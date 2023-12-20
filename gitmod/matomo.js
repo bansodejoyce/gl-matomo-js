@@ -13,7 +13,7 @@ console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
   
-  var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
+  var webIdeButton = document.getElementById('dropdown-toggle-btn-52')
   if(!webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
