@@ -13,18 +13,18 @@ console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
   
-  var webIdeButton = document.getElementById('dropdown-toggle-btn-52')
+  var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
   if(!webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
-  var editButton = document.getElementById('dropdown-toggle-btn-50')
+  var editButton = document.querySelector('[data-qa-selector="action_dropdown"]')
   if (!editButton) {
     editButton.setAttribute('style', 'display:none !important')
   }
-  if ((infrastructureLink = document.getElementById('menu-section-button-operate'))) {
+  if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
     infrastructureLink.style.display = 'none !important';
   }
-  if (monitorLink = document.getElementById('menu-section-button-monitor')) {
+  if ((monitorLink = document.querySelector('[data-track-label="monitor_menu"]'))) {
     monitorLink.style.display = 'none !important';
   }
   if ((k8sLink = document.evaluate(
