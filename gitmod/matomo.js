@@ -17,7 +17,7 @@ function hideThings () {
   if(webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
-  var editButton = document.querySelector('[data-qa-selector="action_dropdown"]')
+  var editButton = document.querySelector('[data-qa-selector="webide_menu_item"]')
   if (editButton) {
     editButton.setAttribute('style', 'display:none !important')
   }
