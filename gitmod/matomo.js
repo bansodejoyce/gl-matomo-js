@@ -14,11 +14,11 @@ console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 function hideThings () {
   
   var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
-  if(!webIdeButton){
+  if(webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
   var editButton = document.querySelector('[data-qa-selector="action_dropdown"]')
-  if (!editButton) {
+  if (editButton) {
     editButton.setAttribute('style', 'display:none !important')
   }
   if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
