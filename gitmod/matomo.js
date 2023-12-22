@@ -3,9 +3,9 @@ var checkRequiredElementsExist = setInterval(function () {
   console.log("window.gl  ",window.gl);
   console.log("document.querySelectorAll('[data-project]').length  ",document.querySelectorAll('[data-project]').length);
   if (window.gl !== 'undefined' &&  document.querySelectorAll('[data-project]').length) {
-    clearInterval(checkRequiredElementsExist);
     hideThings();
     gainsightIdentify();
+    // clearInterval(checkRequiredElementsExist);
   }
 }, 100);
 
@@ -17,6 +17,20 @@ function hideThings () {
   if(webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
+
+  // var editDropdown = document.querySelector('[data-qa-selector="webide_menu_item"]')
+  // if (editButton) {
+  //   // editButton.setAttribute('style', 'display:none !important')
+  //   var current_value = dropdown.options[dropdown.selectedIndex].value;
+    
+  //   if (current_value == "OpNo") {
+  //       document.getElementById("OperationNos").style.display = "block";
+  //   }
+  //   else {
+  //       document.getElementById("OperationNos").style.display = "none";
+  //   }
+  // }
+
   var editButton = document.querySelector('[data-qa-selector="webide_menu_item"]')
   if (editButton) {
     editButton.setAttribute('style', 'display:none !important')
@@ -52,12 +66,17 @@ function addGainsight () {
     var gainsight_key = 'AP-IJB0Z39VSYPZ-2';
   }
   (function(n,t,a,e,co){var i="aptrinsic";n[i]=n[i]||function(){
-        (n[i].q=n[i].q||[]).push(arguments)},n[i].p=e;n[i].c=co;
-        var r=t.createElement("script");r.async=!0,r.src=a+"?a="+e;
-        var c=t.getElementsByTagName("script")[0];c.parentNode.insertBefore(r,c)
-    })(window,document,"https://web-sdk.aptrinsic.com/api/aptrinsic.js",gainsight_key);
+    (n[i].q=n[i].q||[]).push(arguments)},n[i].p=e;n[i].c=co;
+    var r=t.createElement("script");r.async=!0,r.src=a+"?a="+e;
+    var c=t.getElementsByTagName("script")[0];c.parentNode.insertBefore(r,c)
+  })(window,document,"https://web-sdk.aptrinsic.com/api/aptrinsic.js",gainsight_key);
 }
 
 function gainsightIdentify() {
-   aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
+  aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
+  stopInterval()
+}
+
+function stopInterval() {
+  clearInterval(checkRequiredElementsExist);
 }
