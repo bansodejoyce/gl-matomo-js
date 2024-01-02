@@ -2,7 +2,7 @@ addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
   console.log("window.gl  ",window.gl);
   console.log("document.querySelectorAll('[data-project]').length  ",document.querySelectorAll('[data-project]').length);
-  if (window.gl !== 'undefined' &&  document.querySelectorAll('[data-project]').length) {
+  if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
     hideThings();
     gainsightIdentify();
     // clearInterval(checkRequiredElementsExist);
@@ -12,29 +12,18 @@ var checkRequiredElementsExist = setInterval(function () {
 console.log("checkRequiredElementsExist  ",checkRequiredElementsExist);
 
 function hideThings () {
-  
+
   var webIdeButton = document.querySelector('[data-qa-selector="action_dropdown"]')
   if(webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
-
-  // var editDropdown = document.querySelector('[data-qa-selector="webide_menu_item"]')
-  // if (editButton) {
-  //   // editButton.setAttribute('style', 'display:none !important')
-  //   var current_value = dropdown.options[dropdown.selectedIndex].value;
-    
-  //   if (current_value == "OpNo") {
-  //       document.getElementById("OperationNos").style.display = "block";
-  //   }
-  //   else {
-  //       document.getElementById("OperationNos").style.display = "none";
-  //   }
-  // }
-
-  var editButton = document.querySelector('[data-qa-selector="webide_menu_item"]')
+  var editButton = document.querySelector('[data-qa-selector="action_dropdown"]')
   if (editButton) {
-    editButton.setAttribute('style', 'display:none !important')
-  }
+     var webIde = document.querySelector('[data-qa-selector="webide_menu_item"]')
+     if(webIde){
+      webIde.setAttribute('style', 'display:none !important')
+    }
+    }
   if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
     infrastructureLink.style.display = 'none !important';
   }
@@ -73,7 +62,16 @@ function addGainsight () {
 }
 
 function gainsightIdentify() {
-  aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
+  if(document.querySelectorAll('[data-project]')[0]){
+    var idValue = document.querySelectorAll('[data-project]')[0].getAttribute('data-project')
+  }
+  else if(document.querySelectorAll('[data-group]')[0]){
+    var idValue = document.querySelectorAll('[data-group]')[0].getAttribute('data-group')
+  }
+  else if(document.querySelectorAll('[data-user]')[0]){
+    var idValue = document.querySelectorAll('[data-user]')[0].getAttribute('data-user')
+  }
+  aptrinsic("identify", { "id": idValue } );
   stopInterval()
 }
 
