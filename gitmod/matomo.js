@@ -17,13 +17,10 @@ function hideThings () {
   if(webIdeButton){
     webIdeButton.setAttribute('style', 'display:none !important')
   }
-  var editButton = document.querySelector('[data-qa-selector="action_dropdown"]')
-  if (editButton) {
-     var webIde = document.querySelector('[data-qa-selector="webide_menu_item"]')
-     if(webIde){
-      webIde.setAttribute('style', 'display:none !important')
-    }
-    }
+  var editWebButton = document.querySelector('[data-qa-selector="webide_menu_item"]')
+  if (editWebButton) {
+    editWebButton.setAttribute('style', 'display:none !important')
+  }
   if ((infrastructureLink = document.querySelector('[data-track-label="infrastructure_menu"]'))) {
     infrastructureLink.style.display = 'none !important';
   }
