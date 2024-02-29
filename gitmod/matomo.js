@@ -5,6 +5,20 @@ var container;
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
+      if (document.querySelectorAll(".table-holder").length > 0){
+        container = document.querySelectorAll(".table-holder");
+        if(container != null){
+          function create(container) {
+            var config = { childList: true, attributes: true };
+            var addObserverN = new MutationObserver(function(){
+                console.log("in addObserver");
+                console.log("in mutation event listener");
+                hideThings();
+            })
+            addObserverN.observe(container, config)
+          }
+        }
+      }
       clearInterval(checkRequiredElementsExist);
       // hideThings();
       gainsightIdentify();
