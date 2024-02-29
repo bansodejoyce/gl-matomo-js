@@ -12,7 +12,7 @@ var checkRequiredElementsExist = setInterval(function () {
 
 
 function addObserverIfDesiredNodeAvailable() {
-    var composeBox = document.querySelectorAll(".tree-holder");
+    var composeBox = document.querySelectorAll("[data-project]");
     if(!composeBox) {
         window.setTimeout(addObserverIfDesiredNodeAvailable,200);
         return;
