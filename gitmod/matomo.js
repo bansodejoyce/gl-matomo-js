@@ -21,10 +21,10 @@ function addObserverIfDesiredNodeAvailable() {
         window.setTimeout(addObserverIfDesiredNodeAvailable,100);
         return;
     }
-    composeBox.addEventListener("click", () => {
+    // composeBox.addEventListener("click", () => {
       console.log("in event listener");
       hideThings();
-    });
+    // });
     var config = {childList: true};
     composeObserver.observe(composeBox,config);
 }
