@@ -4,6 +4,7 @@ var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
       clearInterval(checkRequiredElementsExist);
+      addObserverIfDesiredNodeAvailable();
       hideThings();
       gainsightIdentify();
     }
@@ -16,32 +17,13 @@ function addObserverIfDesiredNodeAvailable() {
         window.setTimeout(addObserverIfDesiredNodeAvailable,200);
         return;
     }
-    // composeBox.addEventListener("click", () => {
       console.log("in event listener");
       hideThings();
-    // });
-    var config = {childList: true};
+      var config = {childList: true};
 
     const composeObserver = new MutationObserver(addObserverIfDesiredNodeAvailable);
     composeObserver.observe(composeBox,config);
 }
-addObserverIfDesiredNodeAvailable();
-
-// function observeChanges(){
-//     console.log("in observeChanges");
-//     container.addEventListener("click", () => {
-//       console.log("in event listener");
-//       hideThings();
-//     });
-// }
-
-// const observerOptions = {
-//   childList: true,
-//   subtree: true,
-// };
-
-// const observer = new MutationObserver(observeChanges);
-// observer.observe(container, observerOptions);
 
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
