@@ -4,26 +4,11 @@ var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
       clearInterval(checkRequiredElementsExist);
-      addObserverIfDesiredNodeAvailable(document.querySelectorAll('[data-project]'));
       hideThings();
       gainsightIdentify();
     }
   }, 200);
 
-
-function addObserverIfDesiredNodeAvailable(composeBox) {
-  console.log("in event listener ",composeBox);
-  // var composeBox = document.querySelectorAll("[data-project]");
-    if(!composeBox) {
-        window.setTimeout(addObserverIfDesiredNodeAvailable,200);
-        return;
-    }
-      hideThings();
-      var config = {childList: true};
-
-    const composeObserver = new MutationObserver(addObserverIfDesiredNodeAvailable);
-    composeObserver.observe(composeBox,config);
-}
 
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
@@ -32,7 +17,7 @@ function addObserverIfDesiredNodeAvailable(composeBox) {
 function hideThings () {
   console.log("in hideThings")
   // Fetch the document that contains 'Web IDE' text
-  var webIde = document.evaluate("//span[contains(., 'Web IDE')]", document, null, XPathResult.ANY_TYPE, null );
+  var webIde = document.evaluate("//span[contains(., 'Web IDE') or contains(., 'Open in Web IDE')]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null );
   var webIdeDoc = webIde.iterateNext();
   var content;
   console.log(" webIdeDoc ", webIdeDoc)
@@ -103,7 +88,35 @@ function afterLoaded() {
   const additionalWait = setTimeout(hideThings, 200);
 }
 
+function queryElements(selector, callback) {
+  console.log("in queryElements")
 
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => callback(element));
+}
 
+function observe(selector, callback) {
+  console.log("in observe")
+  // hideThings();
+  // Call it once to get all the elements already on the page
+  queryElements(selector, callback);
 
+  const observer = new MutationObserver(() => {
+    console.log("in observer")
+    queryElements(selector, callback);
+  });
 
+  observer.observe(document.documentElement, {
+    // Listen to any kind of changes that might match the selector
+    attributes: true,
+    childList: true,
+  });
+}
+
+// Use it
+observe('.table-holder', element => {
+  // element.style.outline = '2px solid red';
+  element.addEventListener('click', ()=>{
+  hideThings();
+  })
+});
