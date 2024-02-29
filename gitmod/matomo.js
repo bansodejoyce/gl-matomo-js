@@ -5,31 +5,26 @@ var container;
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
-      container = document.querySelectorAll(".table-holder");
+      if (document.querySelectorAll(".table-holder").length > 0){
+        container = document.querySelectorAll(".table-holder");
+        if(container != null){
+          function create(container) {
+            var config = { childList: true, attributes: true };
+            var addObserverN = new MutationObserver(function(){
+                console.log("in addObserver");
+                console.log("in mutation event listener");
+                hideThings();
+            })
+            addObserverN.observe(container, config)
+          }
+        }
+      }
       clearInterval(checkRequiredElementsExist);
       hideThings();
       gainsightIdentify();
     }
-  }, 100);
+  }, 200);
 
-/**
- * Check if there is change in URL. If the change observed invoke hideThings();
- *
- */ 
-
-function addObserverN(){
-  console.log("in addObserver");
-  if(!containerN){
-    //The node we need does not exist yet.
-      //Wait 500ms and try again
-      window.setTimeout(addObserverIfDesiredNodeAvailable,500);
-      return;
-  }
-    containerN.addEventListener("click", () => {
-    console.log("in mutation event listener");
-    hideThings();
-  });
-}
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
  *
@@ -100,5 +95,9 @@ function gainsightIdentify() {
    aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
 }
 
-var config = {childList: true};
-const observerNew = new MutationObserver(addObserverN);
+
+
+
+
+
+
