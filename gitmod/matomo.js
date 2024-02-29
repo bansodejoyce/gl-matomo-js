@@ -5,7 +5,7 @@ var container;
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
-      container = document.querySelector(".table-holder");
+      container = document.querySelectorAll(".table-holder");
       clearInterval(checkRequiredElementsExist);
       hideThings();
       gainsightIdentify();
@@ -17,19 +17,19 @@ var checkRequiredElementsExist = setInterval(function () {
  *
  */ 
 
-function addObserver(){
+function addObserverN(){
   console.log("in addObserver");
-  container.addEventListener("click", () => {
+  if(!containerN){
+    //The node we need does not exist yet.
+      //Wait 500ms and try again
+      window.setTimeout(addObserverIfDesiredNodeAvailable,500);
+      return;
+  }
+    containerN.addEventListener("click", () => {
     console.log("in mutation event listener");
     hideThings();
   });
 }
-
-window.addEventListener("click", function(){
-  console.log("in window event listener");
-  hideThings();
-})
-
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
  *
@@ -101,5 +101,4 @@ function gainsightIdentify() {
 }
 
 var config = {childList: true};
-const observerN = new MutationObserver(addObserver);
-observerN.observe(container, config);
+const observerNew = new MutationObserver(addObserver);
