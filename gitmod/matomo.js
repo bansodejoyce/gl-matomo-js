@@ -22,8 +22,6 @@ function hideThings () {
   for (let index = 0; index < webIde.snapshotLength; index++) {
     var content = webIde.snapshotItem(index);
     if(webIde != null && webIde != null){
-      content = webIde.textContent || webIde.innerText;
-      console.log(" content ", content)
     
       // The style is applied on multiple lists available to edit the files
       if (content.textContent.startsWith('Open in Web IDE')){
