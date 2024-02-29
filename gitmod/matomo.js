@@ -1,6 +1,6 @@
 addGainsight();
 
-var container;
+var container = document.querySelectorAll('[data-project]')
 
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
