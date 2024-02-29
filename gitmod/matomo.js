@@ -7,13 +7,13 @@ var checkRequiredElementsExist = setInterval(function () {
       hideThings();
       gainsightIdentify();
     }
-  }, 100);
+  }, 200);
 
 
 function addObserverIfDesiredNodeAvailable() {
     var composeBox = document.querySelectorAll(".tree-holder");
     if(!composeBox) {
-        window.setTimeout(addObserverIfDesiredNodeAvailable,100);
+        window.setTimeout(addObserverIfDesiredNodeAvailable,200);
         return;
     }
     // composeBox.addEventListener("click", () => {
