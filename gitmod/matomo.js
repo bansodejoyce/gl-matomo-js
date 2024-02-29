@@ -21,9 +21,11 @@ function addObserverIfDesiredNodeAvailable() {
       hideThings();
     // });
     var config = {childList: true};
+
+    const composeObserver = new MutationObserver(addObserverIfDesiredNodeAvailable);
     composeObserver.observe(composeBox,config);
 }
-addObserverIfDesiredNodeAvailable();  
+addObserverIfDesiredNodeAvailable();
 
 // function observeChanges(){
 //     console.log("in observeChanges");
