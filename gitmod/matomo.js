@@ -3,14 +3,14 @@ addGainsight();
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
-      clearInterval(checkRequiredElementsExist);
       // Use it
-    observe('.table-holder', element => {
-      // element.style.outline = '2px solid red';
+      observe('.table-holder', element => {
+        // element.style.outline = '2px solid red';
         element.addEventListener('click', ()=>{
-        hideThings();
+          hideThings();
         })
-    });
+      });
+      clearInterval(checkRequiredElementsExist);
       hideThings();
       gainsightIdentify();
     }
