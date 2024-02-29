@@ -1,15 +1,10 @@
 addGainsight();
 
-var container;
-
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
-      if (document.querySelectorAll(".tree-holder").length > 0){
-        container = document.querySelectorAll(".tree-holder");
-      }
       clearInterval(checkRequiredElementsExist);
-      // hideThings();
+      hideThings();
       gainsightIdentify();
     }
   }, 100);
