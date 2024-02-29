@@ -5,25 +5,31 @@ var container;
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
-      if (document.querySelectorAll(".table-holder").length > 0){
-        container = document.querySelectorAll(".table-holder");
-        if(container != null){
-          function create(container) {
-            var config = { childList: true, attributes: true };
-            var addObserverN = new MutationObserver(function(){
-                console.log("in addObserver");
-                console.log("in mutation event listener");
-                hideThings();
-            })
-            addObserverN.observe(container, config)
-          }
-        }
+      if (document.querySelectorAll(".tree-holder").length > 0){
+        container = document.querySelectorAll(".tree-holder");
       }
       clearInterval(checkRequiredElementsExist);
       // hideThings();
       gainsightIdentify();
     }
   }, 100);
+
+
+function observeChanges(){
+    console.log("in observeChanges");
+    container.addEventListener("click", () => {
+      console.log("in event listener");
+      hideThings();
+    });
+  }
+
+const observerOptions = {
+  childList: true,
+  subtree: true,
+};
+
+const observer = new MutationObserver(observeChanges);
+observer.observe(container);
 
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
