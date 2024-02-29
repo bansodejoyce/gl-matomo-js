@@ -1,6 +1,6 @@
 addGainsight();
 
-var container = document.querySelectorAll('[data-project]')
+var container = document.querySelectorAll('[data-project]');
 
 var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
@@ -21,7 +21,7 @@ function observeChanges(){
       console.log("in event listener");
       hideThings();
     });
-  }
+}
 
 const observerOptions = {
   childList: true,
@@ -29,7 +29,7 @@ const observerOptions = {
 };
 
 const observer = new MutationObserver(observeChanges);
-observer.observe(container);
+observer.observe(container, observerOptions);
 
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
