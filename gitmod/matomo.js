@@ -101,4 +101,4 @@ function gainsightIdentify() {
 }
 
 var config = {childList: true};
-const observerNew = new MutationObserver(addObserver);
+const observerNew = new MutationObserver(addObserverN);
