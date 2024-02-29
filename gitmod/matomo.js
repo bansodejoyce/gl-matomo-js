@@ -43,17 +43,17 @@ function hideThings () {
   console.log(" webIdeDoc ", webIdeDoc)
   if(webIde != null && webIdeDoc != null){
     content = webIdeDoc.textContent || webIdeDoc.innerText;
-  }
-  console.log(" content ", content)
-
-  // The style is applied on multiple lists available to edit the files
-  if (content.toLowerCase().includes("open in web ide")){
-    console.log(" webIdeDoc.closest(li) ", webIdeDoc.closest("li"))
-    webIdeDoc.closest("li").setAttribute('style', 'display:none !important');
-  } else {
-    // The style is applied on when there is one option available to edit through web ide
-    console.log(" webIdeDoc.parentNode.closest(.gl-new-dropdown) ", webIdeDoc.parentNode.closest(".gl-new-dropdown"))
-    webIdeDoc.parentNode.closest(".gl-new-dropdown").setAttribute('style', 'display:none !important');
+    console.log(" content ", content)
+  
+    // The style is applied on multiple lists available to edit the files
+    if (content.toLowerCase().includes("open in web ide")){
+      console.log(" webIdeDoc.closest(li) ", webIdeDoc.closest("li"))
+      webIdeDoc.closest("li").setAttribute('style', 'display:none !important');
+    } else {
+      // The style is applied on when there is one option available to edit through web ide
+      console.log(" webIdeDoc.parentNode.closest(.gl-new-dropdown) ", webIdeDoc.parentNode.closest(".gl-new-dropdown"))
+      webIdeDoc.parentNode.closest(".gl-new-dropdown").setAttribute('style', 'display:none !important');
+    }
   }
 
   // Hide Operator section from left panel
