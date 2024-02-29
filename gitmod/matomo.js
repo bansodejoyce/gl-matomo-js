@@ -4,20 +4,20 @@ var checkRequiredElementsExist = setInterval(function () {
     // checkURLchange(oldURL);
     if (window.gl !== 'undefined' && document.readyState == "complete" && document.querySelectorAll('[data-project]').length) {
       clearInterval(checkRequiredElementsExist);
-      addObserverIfDesiredNodeAvailable();
+      addObserverIfDesiredNodeAvailable(document.querySelectorAll('[data-project]'));
       hideThings();
       gainsightIdentify();
     }
   }, 200);
 
 
-function addObserverIfDesiredNodeAvailable() {
-    var composeBox = document.querySelectorAll("[data-project]");
+function addObserverIfDesiredNodeAvailable(composeBox) {
+  console.log("in event listener ",composeBox);
+  // var composeBox = document.querySelectorAll("[data-project]");
     if(!composeBox) {
         window.setTimeout(addObserverIfDesiredNodeAvailable,200);
         return;
     }
-      console.log("in event listener");
       hideThings();
       var config = {childList: true};
 
