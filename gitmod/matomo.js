@@ -18,21 +18,22 @@ function hideThings () {
   console.log("in hideThings")
   // Fetch the document that contains 'Web IDE' text
   var webIde = document.evaluate("//span[contains(., 'Web IDE') or contains(., 'Open in Web IDE')]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null );
-  var webIdeDoc = webIde.iterateNext();
-  var content;
-  console.log(" webIdeDoc ", webIdeDoc)
-  if(webIde != null && webIdeDoc != null){
-    content = webIdeDoc.textContent || webIdeDoc.innerText;
-    console.log(" content ", content)
   
-    // The style is applied on multiple lists available to edit the files
-    if (content.toLowerCase().includes("open in web ide")){
-      console.log(" webIdeDoc.closest(li) ", webIdeDoc.closest("li"))
-      webIdeDoc.closest("li").setAttribute('style', 'display:none !important');
-    } else {
-      // The style is applied on when there is one option available to edit through web ide
-      console.log(" webIdeDoc.parentNode.closest(.gl-new-dropdown) ", webIdeDoc.parentNode.closest(".gl-new-dropdown"))
-      webIdeDoc.parentNode.closest(".gl-new-dropdown").setAttribute('style', 'display:none !important');
+  for (let index = 0; index < webIde.snapshotLength; index++) {
+    var content = webIde.snapshotItem(index);
+    if(webIde != null && webIdeDoc != null){
+      content = webIde.textContent || webIde.innerText;
+      console.log(" content ", content)
+    
+      // The style is applied on multiple lists available to edit the files
+      if (content.textContent.startsWith('Open in Web IDE')){
+        console.log(" content.closest(li) ", content.closest("li"))
+        content.closest("li").setAttribute('style', 'display:none !important');
+      } else {
+        // The style is applied on when there is one option available to edit through web ide
+        console.log(" content.parentNode.closest(.gl-new-dropdown) ", content.parentNode.closest(".gl-new-dropdown"))
+        content.parentNode.closest(".gl-new-dropdown").setAttribute('style', 'display:none !important');
+      }
     }
   }
 
