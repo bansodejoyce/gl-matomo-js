@@ -21,7 +21,7 @@ function hideThings () {
   
   for (let index = 0; index < webIde.snapshotLength; index++) {
     var content = webIde.snapshotItem(index);
-    if(webIde != null && webIdeDoc != null){
+    if(webIde != null && webIde != null){
       content = webIde.textContent || webIde.innerText;
       console.log(" content ", content)
     
