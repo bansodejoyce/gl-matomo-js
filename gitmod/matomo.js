@@ -16,20 +16,19 @@ var checkRequiredElementsExist = setInterval(function () {
  * Check if there is change in URL. If the change observed invoke hideThings();
  *
  */ 
-function checkURLchange(oldURL){
-  if(window.location.href != oldURL){
-      oldURL = window.location.href;
-      hideThings();
-  }
-}
 
-function observeChanges(){
-  console.log("in observeChanges");
+function addObserver(){
+  console.log("in addObserver");
   container.addEventListener("click", () => {
-    console.log("in event listener");
+    console.log("in mutation event listener");
     hideThings();
   });
 }
+
+window.addEventListener("click", function(){
+  console.log("in window event listener");
+  hideThings();
+})
 
 /**
  * Add logic to hide the webide and edit options from Code Studio UI
@@ -101,5 +100,6 @@ function gainsightIdentify() {
    aptrinsic("identify", { "id": document.querySelectorAll('[data-project]')[0].getAttribute('data-project') } );
 }
 
-const observer = new MutationObserver(observeChanges);
-observer.observe(container);
+var config = {childList: true};
+const observerN = new MutationObserver(addObserver);
+observerN.observe(container, config);
